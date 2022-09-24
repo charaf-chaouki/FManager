@@ -1,4 +1,5 @@
 <?php
+var_dump($_SERVER); exit;
 //Variable Application
 $dir = __DIR__ . '/files/';
 $filePath = $dir . 'file1.txt';

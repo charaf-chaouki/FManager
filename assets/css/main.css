@@ -1,0 +1,28 @@
+.login-container{
+    margin-top: 80px;
+}
+.login-container .form-control{
+    width: 460px !important;
+}
+.login-btn{
+    width:100%;
+    margin-top:26px;
+}
+.btn-success{
+    background-color: #08c25d;
+    border-color:#08c25d;
+}
+.logo-container{
+    display: flex;
+    justify-content: center;
+    margin-bottom:18px;
+}
+.logo-container img
+{
+    width: 120px;
+}
+.form-control:focus{
+    border-color: #08c25d;
+    outline:none !important;
+    box-shadow: none;
+}
