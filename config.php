@@ -1,4 +1,9 @@
 <?php
 
     define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT']);
-    define("USE_AUTH", true);
+    define('AUTH_USERS', [
+        [
+            'email' => 'admin@gmail.com',
+            'password' => 'admin',
+        ]
+    ]);

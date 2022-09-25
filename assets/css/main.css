@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+h1,h2,h3,h4,h5,h6,p,strong, span,html, body,i,div,table,tr,td,th,ul, ol, li, *
+{
+    font-family: Montserrat, Helvetica, Arial !important;
+}
 .login-container{
     margin-top: 80px;
 }
@@ -25,4 +31,64 @@
     border-color: #08c25d;
     outline:none !important;
     box-shadow: none;
+}
+.nav-bar{
+    background-color:#08c25d;
+    color:white;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+}
+.add-file
+{
+    background: white;
+    width: 90px;
+    border-radius: 16px;
+    font-weight: 600;
+    margin-left:196px;
+}
+.forders
+{
+    height: 100vh;
+    background: #f6f6f6;
+    border-right: 2px solid #eee;
+    padding: 10px 16px;
+}
+.forders ul
+{
+    list-style: none;
+}
+.forders ul li
+{
+    font-size: 10pt;
+    font-weight: 600;
+    padding: 4px 0px;
+    color: #5f605f;
+}
+.forders .icon
+{
+    color: #08c25d;
+    font-size: 13pt;
+    margin-right: 6px;
+}
+.thead-light{
+    background-color: #f8f8f8;
+}
+th {
+    font-size: 10pt;
+}
+.files-list td
+{
+    font-size: 10pt;
+    font-weight: 600;
+    color: #7f7f7f;
+    padding: 11px 8px;
+}
+span.file-icon {
+    color: #08c25d;
+    font-size: 14pt;
+    margin-right: 6px;
+}
+span.file-extension {
+    color: #d3d5d4;
 }

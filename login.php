@@ -1,7 +1,33 @@
+<?php
+     require_once('config.php');
+     require_once('autoload.php');
+  
+     if(!isset($_SESSION))
+     {
+         session_start();
+     }
+
+     if(isset($_SESSION['fm_logged']))
+     {
+        header('location: index.php');
+     }
+
+     if(isset($_POST['username']))
+     {
+          if(Auth::login($_POST['username'], $_POST['password']))
+          {
+             header('location: index.php');
+          }
+          else
+          {
+                $error = "Your username or password is invalid";
+          }
+     }
+?>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Authentification</title>
+        <title>FM - Authentification</title>
 
         <!-- Favicon -->
         <link rel="icon" href="assets/img/logo.png">
@@ -22,19 +48,26 @@
         <script src="assets/js/main.js"></script>
     </head>
     <body>
+        <form action="" method="post">
         <div class="d-flex justify-content-center mt-4">
             <div class="login-container">
                 <div class="logo-container">
                     <img src="assets/img/logo.png">
                 </div>
+                <?php if(isset($error)): ?>
+                    <div class="alert alert-danger p-2">
+                        <?php echo $error ?>
+                    </div>
+                <?php endif; ?>
                 <div class="form-group">
-                     <input type="text" class="form-control" placeholder="Email">
+                     <input type="text" name="username" class="form-control" placeholder="Email">
                 </div>
                 <div class="form-group mt-3">
-                     <input type="password" class="form-control" placeholder="Password">
+                     <input type="password" name="password" class="form-control" placeholder="Password">
                 </div>
                 <button class="btn btn-success login-btn">Sign in</button>
             </div>
         </div>
+        </form>
     </body>
 </html>

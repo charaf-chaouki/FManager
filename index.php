@@ -1,27 +1,123 @@
 <?php
-var_dump($_SERVER); exit;
-//Variable Application
-$dir = __DIR__ . '/files/';
-$filePath = $dir . 'file1.txt';
+    require('env.php');
+    //cunset($_SESSION['fm_logged']);
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FM - File Manager</title>
 
-//Check file exists
-if(file_exists($filePath))
-{
-    //Open File
-    //$file = fopen($filePath, 'r');
+        <!-- Favicon -->
+        <link rel="icon" href="assets/img/logo.png">
 
-   // if($file)
-    {
-        //read content
-        $html = file_get_contents($filePath);
-        
-        echo nl2br($html);
+        <!-- Bootstrap CDN -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap.min.css" integrity="sha512-siwe/oXMhSjGCwLn+scraPOWrJxHlUgMBMZXdPe2Tnk3I0x3ESCoLz7WZ5NTH6SZrywMY+PB1cjyqJ5jAluCOg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        //close File
-       // fclose($file);
-    }
-}
-else
-{
-    die('This file doesn\'t exist!');
-}
+        <!-- JQUERY CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/js/bootstrap.min.js"></script>
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js" integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+        <!-- Main CSS -->
+        <link rel="stylesheet" href="assets/css/main.css">
+
+        <!-- Main js -->
+        <script src="assets/js/main.js"></script>
+    </head>
+    <body>
+        <div class="nav-bar">
+                <h5>File Manager</h5>
+                <button class="btn add-file"><i class="fa-solid fa-plus"></i> Add</button>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 forders">
+                        <ul class="forders-list">
+                            <li>
+                            <i class="fa-solid fa-caret-down"></i> <i class="fa-regular fa-folder icon"></i> My Files
+                                <ul>
+                                    <li>
+                                        <i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> Forder 1
+                                        <ul class="sub-forders">
+                                            <li><i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> Sub Forder 1</li>
+                                            <li><i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> Sub Forder 2</li>
+                                            <li><i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> Sub Forder 3</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> Forder 2
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> Forder 3
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> Forder 4
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> Forder 5
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> Forder 6
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> Images
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                </div>
+                <div class="col-md-9">
+                    <div class="breadcrumb-container py-2">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item active" aria-current="page">My Files</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="files-list">
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col" width="40%">Name</th>
+                                    <th scope="col">Label</th>
+                                    <th scope="col">Size</th>
+                                    <th scope="col">Modified</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php for($i = 0; $i < 10; $i++): ?>
+                                <tr>
+                                    <td>
+                                        <span class="file-icon">
+                                        <i class="fa-regular fa-folder icon"></i>
+                                        </span>
+                                        <span class="file-name">
+                                        about
+                                        </span>
+                                        <span class="file-extension">TXT</span>
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                        12 MB
+                                    </td>
+                                    <td>
+                                        25/09/2022 17:25
+                                    </td>
+                                </tr>
+                                <?php endfor; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
