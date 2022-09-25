@@ -1,8 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800&display=swap');
 
+body {
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
 h1,h2,h3,h4,h5,h6,p,strong, span,html, body,i,div,table,tr,td,th,ul, ol, li, *
 {
     font-family: Montserrat, Helvetica, Arial !important;
+}
+a, a:hover, a:active{
+   text-decoration: none !important;
+   color:#7f7f7f;
 }
 .login-container{
     margin-top: 80px;
@@ -33,6 +41,9 @@ h1,h2,h3,h4,h5,h6,p,strong, span,html, body,i,div,table,tr,td,th,ul, ol, li, *
     box-shadow: none;
 }
 .nav-bar{
+    width:100%;
+    position:fixed;
+    top:0px;
     background-color:#08c25d;
     color:white;
     padding: 8px 12px;
@@ -49,10 +60,15 @@ h1,h2,h3,h4,h5,h6,p,strong, span,html, body,i,div,table,tr,td,th,ul, ol, li, *
 }
 .forders
 {
-    height: 100vh;
+    height: 92vh;
     background: #f6f6f6;
     border-right: 2px solid #eee;
     padding: 10px 16px;
+    overflow-y: scroll;
+}
+.dir-contents{
+    height: 92vh;
+    overflow-y: scroll;
 }
 .forders ul
 {

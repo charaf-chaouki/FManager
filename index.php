@@ -1,6 +1,14 @@
 <?php
     require('env.php');
     //cunset($_SESSION['fm_logged']);
+
+    $dir = $_SERVER['DOCUMENT_ROOT'] . '/deco';
+
+    $fdir = new FDir();
+
+    $files = $fdir->scanDir($dir);
+    $dirs = $fdir->getDirectories($dir);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,13 +43,14 @@
                 <h5>File Manager</h5>
                 <button class="btn add-file"><i class="fa-solid fa-plus"></i> Add</button>
         </div>
-        <div class="container-fluid">
+        <div class="container-fluid" style="margin-top: 54px;">
             <div class="row">
                 <div class="col-md-3 forders">
                         <ul class="forders-list">
                             <li>
                             <i class="fa-solid fa-caret-down"></i> <i class="fa-regular fa-folder icon"></i> My Files
                                 <ul>
+                                    <!--
                                     <li>
                                         <i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> Forder 1
                                         <ul class="sub-forders">
@@ -50,29 +59,18 @@
                                             <li><i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> Sub Forder 3</li>
                                         </ul>
                                     </li>
+                                    -->
+                                    <?php foreach($dirs as $dir): ?>
                                     <li>
-                                        <i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> Forder 2
+                                        <i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> 
+                                        <?php echo $dir->fileName ?>
                                     </li>
-                                    <li>
-                                        <i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> Forder 3
-                                    </li>
-                                    <li>
-                                        <i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> Forder 4
-                                    </li>
-                                    <li>
-                                        <i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> Forder 5
-                                    </li>
-                                    <li>
-                                        <i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> Forder 6
-                                    </li>
-                                    <li>
-                                        <i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> Images
-                                    </li>
+                                    <?php endforeach; ?>
                                 </ul>
                             </li>
                         </ul>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-9 dir-contents">
                     <div class="breadcrumb-container py-2">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
@@ -91,28 +89,32 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php for($i = 0; $i < 10; $i++): ?>
+                                <?php foreach($files as $file): ?>
                                 <tr>
                                     <td>
-                                        <span class="file-icon">
-                                        <i class="fa-regular fa-folder icon"></i>
-                                        </span>
-                                        <span class="file-name">
-                                        about
-                                        </span>
-                                        <span class="file-extension">TXT</span>
+                                        <a href="">
+                                            <span class="file-icon">
+                                                <i class="<?php echo $file->icon ?>"></i>
+                                            </span>
+                                            <span class="file-name">
+                                                <?php echo $file->fileName ?>
+                                            </span>
+                                            <span class="file-extension">
+                                                <?php echo $file->extension ?>
+                                            </span>
+                                        </a>
                                     </td>
                                     <td>
 
                                     </td>
                                     <td>
-                                        12 MB
+                                        <?php echo $file->size ?>
                                     </td>
                                     <td>
-                                        25/09/2022 17:25
+                                        <?php echo $file->modified ?>
                                     </td>
                                 </tr>
-                                <?php endfor; ?>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
