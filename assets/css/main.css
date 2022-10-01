@@ -58,6 +58,10 @@ a, a:hover, a:active{
     font-weight: 600;
     margin-left:196px;
 }
+.forders-list
+{
+    padding-left: 6px;
+}
 .forders
 {
     height: 92vh;
@@ -107,4 +111,12 @@ span.file-icon {
 }
 span.file-extension {
     color: #d3d5d4;
+}
+tr.active
+{
+    background-color:#f1faf5;
+}
+tr.active *
+{
+    color: #08c25d !important;;
 }

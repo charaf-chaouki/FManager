@@ -22,6 +22,7 @@ class FDir extends FManager{
         foreach($filesScanned as $source)
         {
             $filesList[] = (object)array(
+                'path' => $source,
                 'fileName' => $this->getFileName($source),
                 'size' => $this->getSize($source),
                 'extension' => $this->getExtension($source),
@@ -53,6 +54,7 @@ class FDir extends FManager{
         foreach($filesScanned as $source)
         {
             $filesList[] = (object)array(
+                'path' => $source,
                 'fileName' => $this->getFileName($source),
             );
         }

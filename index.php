@@ -88,11 +88,11 @@
                                     <th scope="col">Modified</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="tbody">
                                 <?php foreach($files as $file): ?>
                                 <tr>
                                     <td>
-                                        <a href="">
+                                        <a class="open-forder" href="javascript:void(0);" link="<?php echo $file->path ?>">
                                             <span class="file-icon">
                                                 <i class="<?php echo $file->icon ?>"></i>
                                             </span>
@@ -122,4 +122,25 @@
             </div>
         </div>
     </body>
+
+    <script>
+        $('body') .on('dblclick', '.open-forder', function(){
+            let link = $(this).attr('link');
+
+            $.ajax({
+                url: "ajax/get_files.php",
+                type: "post",
+                data: {dir: link},
+                success: function(data){
+                    $('#tbody').html(data);
+                }
+
+            })
+        });
+
+        $('body') .on('click', '.open-forder', function(){
+
+            $(this).closest('tr').addClass('active');
+        });
+    </script>
 </html>
