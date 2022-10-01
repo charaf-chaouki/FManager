@@ -120,3 +120,8 @@ tr.active *
 {
     color: #08c25d !important;;
 }
+.arrow
+{
+    margin-left: -14px !important;
+    margin-right: 4px;
+}

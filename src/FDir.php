@@ -5,7 +5,6 @@ class FDir extends FManager{
     public function scanDir($path)
     {
         $filesScanned = glob($path . '/*');
-        $filesList = [];
 
         usort($filesScanned, function ($a, $b) {
             $aIsDir = is_dir($a);
@@ -19,17 +18,7 @@ class FDir extends FManager{
                 return 1; // $b is dir, should be before $a
         });
         
-        foreach($filesScanned as $source)
-        {
-            $filesList[] = (object)array(
-                'path' => $source,
-                'fileName' => $this->getFileName($source),
-                'size' => $this->getSize($source),
-                'extension' => $this->getExtension($source),
-                'modified' => $this->modified($source),
-                'icon' => $this->getIcon($source)
-            );
-        }
+        $filesList = $this->filesDetails($filesScanned);
 
         return $filesList;
     }
@@ -37,7 +26,6 @@ class FDir extends FManager{
     public function getDirectories($path)
     {
         $filesScanned = glob($path . '/*', GLOB_ONLYDIR);
-        $filesList = [];
 
         usort($filesScanned, function ($a, $b) {
             $aIsDir = is_dir($a);
@@ -51,11 +39,44 @@ class FDir extends FManager{
                 return 1; // $b is dir, should be before $a
         });
 
-        foreach($filesScanned as $source)
+        $filesList = $this->filesDetails($filesScanned);
+
+        return $filesList;
+    }
+
+    public function hasSubDirectories($path)
+    {
+        if(!is_dir($path))
+        {
+            return false;
+        }
+        else
+        {
+            $subDirs = glob($path . "/*", GLOB_ONLYDIR);
+
+            usort($subDirs, function ($a, $b) {
+                return strnatcasecmp($a, $b);
+            });
+
+            return $this->filesDetails($subDirs);;
+            
+        }
+    }
+
+    public function filesDetails($paths)
+    {
+        $filesList = [];
+
+        foreach($paths as $source)
         {
             $filesList[] = (object)array(
                 'path' => $source,
                 'fileName' => $this->getFileName($source),
+                'size' => $this->getSize($source),
+                'extension' => $this->getExtension($source),
+                'modified' => $this->modified($source),
+                'icon' => $this->getIcon($source),
+                'subDirs' => $this->hasSubDirectories($source)
             );
         }
 

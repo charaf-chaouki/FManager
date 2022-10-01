@@ -48,22 +48,17 @@
                 <div class="col-md-3 forders">
                         <ul class="forders-list">
                             <li>
-                            <i class="fa-solid fa-caret-down"></i> <i class="fa-regular fa-folder icon"></i> My Files
+                            <i class="fa-solid abs-arrow fa-caret-down"></i> <i class="fa-regular fa-folder icon"></i> My Files
                                 <ul>
-                                    <!--
-                                    <li>
-                                        <i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> Forder 1
-                                        <ul class="sub-forders">
-                                            <li><i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> Sub Forder 1</li>
-                                            <li><i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> Sub Forder 2</li>
-                                            <li><i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> Sub Forder 3</li>
-                                        </ul>
-                                    </li>
-                                    -->
                                     <?php foreach($dirs as $dir): ?>
                                     <li>
-                                        <i class="fa-solid fa-caret-right"></i> <i class="fa-regular fa-folder icon"></i> 
-                                        <?php echo $dir->fileName ?>
+                                        <a class="open-forder is-dir" href="javascript:void(0);" link="<?php echo $dir->path ?>">
+                                            <?php if($dir->subDirs): ?>
+                                            <i class="arrow dir-close fa-solid fa-caret-right"></i> 
+                                            <?php endif; ?>
+                                            <i class="fa-regular fa-folder icon"></i> 
+                                            <?php echo $dir->fileName ?>
+                                        </a>
                                     </li>
                                     <?php endforeach; ?>
                                 </ul>
@@ -122,25 +117,4 @@
             </div>
         </div>
     </body>
-
-    <script>
-        $('body') .on('dblclick', '.open-forder', function(){
-            let link = $(this).attr('link');
-
-            $.ajax({
-                url: "ajax/get_files.php",
-                type: "post",
-                data: {dir: link},
-                success: function(data){
-                    $('#tbody').html(data);
-                }
-
-            })
-        });
-
-        $('body') .on('click', '.open-forder', function(){
-
-            $(this).closest('tr').addClass('active');
-        });
-    </script>
 </html>
