@@ -20,7 +20,7 @@
         $response["data"] .= '
             <tr>
             <td>
-                <a class="open-forder" href="javascript:void(0);" link="' . $file->path . '">
+                <a class="' . ((!$file->isFile)?"open-forder":"download")  . '" href="javascript:void(0);" link="' . $file->path . '">
                     <span class="file-icon">
                         <i class="' . $file->icon . '"></i>
                     </span>
@@ -60,7 +60,7 @@
 
             if($dir->subDirs)
             {
-                $response['subDir'] .= '<i class="arrow dir-close fa-solid fa-caret-right"></i>';
+                $response['subDir'] .= '<i class="arrow arrow-close fa-solid fa-caret-right"></i>';
             }
                  
        $response['subDir'] .=  '<i class="fa-regular fa-folder icon"></i>

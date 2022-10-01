@@ -1,6 +1,6 @@
 <?php
 
-    define("ROOT_DIR", $_SERVER['DOCUMENT_ROOT']);
+    define("ROOT_DIR", __DIR__ . "/..");
     define('AUTH_USERS', [
         [
             'email' => 'admin@gmail.com',

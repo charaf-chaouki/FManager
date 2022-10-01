@@ -44,7 +44,7 @@ class FDir extends FManager{
         return $filesList;
     }
 
-    public function hasSubDirectories($path)
+    public function hasSubDirectories($path, $GET_SUBDIR = false)
     {
         if(!is_dir($path))
         {
@@ -54,12 +54,16 @@ class FDir extends FManager{
         {
             $subDirs = glob($path . "/*", GLOB_ONLYDIR);
 
-            usort($subDirs, function ($a, $b) {
-                return strnatcasecmp($a, $b);
-            });
+            if($GET_SUBDIR)
+            {
+                usort($subDirs, function ($a, $b) {
+                    return strnatcasecmp($a, $b);
+                });
 
-            return $this->filesDetails($subDirs);;
-            
+                return $this->filesDetails($subDirs);
+            }
+
+            return ($subDirs)?true:false;
         }
     }
 
@@ -76,7 +80,8 @@ class FDir extends FManager{
                 'extension' => $this->getExtension($source),
                 'modified' => $this->modified($source),
                 'icon' => $this->getIcon($source),
-                'subDirs' => $this->hasSubDirectories($source)
+                'subDirs' => $this->hasSubDirectories($source),
+                'isFile' => is_file($source)
             );
         }
 

@@ -2,8 +2,7 @@
     require('env.php');
     //cunset($_SESSION['fm_logged']);
 
-    $dir = $_SERVER['DOCUMENT_ROOT'] . '/deco';
-
+    $dir = ROOT_DIR;
     $fdir = new FDir();
 
     $files = $fdir->scanDir($dir);
@@ -87,7 +86,7 @@
                                 <?php foreach($files as $file): ?>
                                 <tr>
                                     <td>
-                                        <a class="open-forder" href="javascript:void(0);" link="<?php echo $file->path ?>">
+                                        <a class="<?php echo (!$file->isFile)?'open-forder':'download' ?>" href="javascript:void(0);" link="<?php echo $file->path ?>">
                                             <span class="file-icon">
                                                 <i class="<?php echo $file->icon ?>"></i>
                                             </span>

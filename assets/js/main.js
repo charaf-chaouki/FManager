@@ -23,6 +23,13 @@ $(document).ready(function(){
         $(this).closest('li').find('.arrow').removeClass('dir-close').addClass('dir-open');
     });
     
+    $('body').on('dblclick', '.download', function(){
+        let link = $(this).attr('link');
+
+        window.location.href = link;
+
+    });
+
     $('body').on('click', '.abs-arrow', function(){
         $('.arrow').removeClass('fa-caret-down').addClass('fa-caret-right');
         $('.arrow').removeClass('dir-open').addClass('dir-close');
