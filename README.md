@@ -1,4 +1,7 @@
 
+<div align="center">
+    <img src="/screenshots/screen1.png" width="400px"</img> 
+</div>
 # FManager: file manager tool 
 
 FManager is a powerfull File sharing tool. you can access you files anywhere and at anytime  through self-hosted secure cloud storage, file backup and sharing for your photos, videos, files and more. Upload and download large files and make your data organized.
