@@ -10,7 +10,13 @@
     $dirs = $fdir->getDirectories($dir);
 
     $response = [
-        'data' => '',
+        'data' => '
+        <tr style="
+            background: #f6f6f6;
+            font-size: 30pt !important;
+        ">
+                <td colspan="4">...</td>
+            </tr>',
         'subDir' => ''
     ];
 

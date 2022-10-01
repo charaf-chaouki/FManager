@@ -27,6 +27,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/js/bootstrap.min.js"></script>
 
         <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js" integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
@@ -38,6 +39,51 @@
         <script src="assets/js/main.js"></script>
     </head>
     <body>
+    <div id="contextMenu" class="context-menu" 
+        style="display:none">
+        <ul>
+           <li>
+                <a href="#">
+                <i class="fa-solid fa-download icon"></i>
+                    Download
+                </a>
+           </li>
+           <li>
+                <a href="#">
+                    <i class="fa-solid fa-eye icon"></i>
+                    Preview
+                </a>
+           </li>
+           <li>
+                <a href="#">
+                    <i class="fa-solid fa-pen-to-square icon"></i>
+                    Edit
+                </a>
+           </li>
+        </ul>
+        <ul>
+           <li>
+                <a href="#">
+                    <i class="fa-solid fa-copy icon"></i>
+                    Copy / Move
+                </a>
+           </li>
+           <li>
+            <a href="#">
+                <i class="fa-solid fa-i-cursor icon"></i>
+                    Rename
+                </a>
+           </li>
+        </ul>
+        <ul>
+           <li>
+                <a href="#">
+                    <i class="fa-solid fa-trash-can icon"></i>
+                    Remove
+                </a>
+           </li>
+        </ul>
+    </div>
         <div class="nav-bar">
                 <h5>File Manager</h5>
                 <button class="btn add-file"><i class="fa-solid fa-plus"></i> Add</button>
