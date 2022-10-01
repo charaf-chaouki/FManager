@@ -1,6 +1,6 @@
 
 <div align="center">
-    <img src="/screenshots/screen1.png" width="400px"</img> 
+    <img src="/screenshots/screen1.png" width="100%"/> 
 </div>
 # FManager: file manager tool 
 
@@ -47,7 +47,10 @@ Password: admin
 
 you can change you authentification data at any time, Also maybe add some new users to work with in the same project.
 
-    
+<div align="center">
+    <img src="/screenshots/screen2.png" width="100%"/> 
+</div> 
+   
 ## License
 This software is released under the MIT license.
 
