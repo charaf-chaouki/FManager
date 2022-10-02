@@ -134,4 +134,42 @@ class FManager{
             }
         }
     }
+
+    public function copyFile($source, $dest, $overwritten = true)
+    {
+        if(!file_exists($source))
+        {
+            return false;
+        }
+
+        if(!$overwritten && file_exists($dest))
+        {
+            return false;
+        }
+
+        return copy($source, $dest);
+    }
+
+    public function deleteFile($source)
+    {
+        if(!file_exists($source))
+        {
+            return false;
+        }
+        else
+        {
+            return unlink($source);
+        }
+    }
+
+    public function renameFile($oldName, $newName)
+    {
+        if(!file_exists($oldName))
+        {
+            return false;
+        }
+
+        return rename($oldName, $newName);
+    }
+
 }
